@@ -21,11 +21,11 @@ live_plot = LivePlot(
     ylim_rhs=(-3.5, 3.5),
 )
 
-live_plot.add_left_axis_line("sine", "b-")
+live_plot.add_line("sine", "b-")
 live_plot.left_axis.set_ylabel("sin(t)", color="b")
 live_plot.left_axis.tick_params(axis="y", labelcolor="b")
 
-live_plot.add_right_axis_line("cosine", "g-")
+live_plot.add_line_right("cosine", "g-")
 live_plot.right_axis.set_ylabel("3 cos(t)", color="g")
 live_plot.right_axis.tick_params(axis="y", labelcolor="g")
 

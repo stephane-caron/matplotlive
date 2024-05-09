@@ -55,10 +55,10 @@ class LivePlot:
             kwargs: Forwarded to ``pyplot.plot``.
         """
         kwargs["animated"] = True
-        (line,) = self.axis.plot([], *args, **kwargs)
+        (line,) = self.left_axis.plot([], *args, **kwargs)
         self.lines[name] = line
 
-    def add_rhs_line(self, name, *args, **kwargs) -> None:
+    def add_line_right(self, name, *args, **kwargs) -> None:
         """Add a line-plot to the right axis.
 
         Args:
@@ -66,10 +66,10 @@ class LivePlot:
             args: Forwarded to ``pyplot.plot``.
             kwargs: Forwarded to ``pyplot.plot``.
         """
-        if self.rhs_axis is None:
+        if self.right_axis is None:
             raise Exception("right-hand side axis not initialized")
         kwargs["animated"] = True
-        (line,) = self.rhs_axis.plot([], *args, **kwargs)
+        (line,) = self.right_axis.plot([], *args, **kwargs)
         self.lines[name] = line
 
     def legend(self, legend: Sequence[str]) -> None:
