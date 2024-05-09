@@ -4,12 +4,16 @@
 # SPDX-License-Identifier: Apache-2.0
 # Copyright 2023 Inria
 
-"""Set of system-specific live plots provided for reference and examples."""
+"""Stream live plots to a matplotlib figure."""
 
-from .live_plot import LivePlot
+from .exceptions import MatplotliveError
+from .recent_past import RecentPast
+from .sketch import Sketch
 
 __version__ = "0.0.1"
 
 __all__ = [
-    "LivePlot",
+    "MatplotliveError",
+    "RecentPast",
+    "Sketch",
 ]

@@ -4,26 +4,33 @@
 # SPDX-License-Identifier: Apache-2.0
 # Copyright 2023 Inria
 
-"""Utility functions and classes."""
+"""Updatable plot using matplotlib."""
 
-from typing import Any, Dict, Sequence
+from typing import Any, Dict, Optional, Sequence, Tuple
 
 import matplotlib
 from matplotlib import pyplot as plt
 
+from .exceptions import MatplotliveError
 
-class LivePlot:
-    """Live plot using matplotlib."""
+class Sketch:
+    """Updatable plot using matplotlib."""
 
     lines: Dict[str, Any]
 
-    def __init__(self, xlim, ylim, ylim_right=None, faster: bool = True):
-        """Initialize live plot.
+    def __init__(
+        self,
+        xlim: Tuple[float, float],
+        ylim: Tuple[float, float],
+        ylim_right: Optional[Tuple[float, float]] = None,
+        faster: bool = True,
+    ):
+        """Initialize sketch plot.
 
         Args:
             xlim: Limits for the x-axis.
             ylim: Limits for left-hand side y-axis.
-            ylim_right: Limits for the right-hand side y-axis.
+            ylim_right: If set, create a right y-axis with these limits.
             faster: If set, use blitting.
         """
         if faster:  # blitting doesn't work with all matplotlib backends
@@ -46,30 +53,20 @@ class LivePlot:
         self.lines = {}
         self.right_axis = right_axis
 
-    def add_line(self, name, *args, **kwargs) -> None:
+    def add_line(self, name: str, side: str, *args, **kwargs) -> None:
         """Add a line-plot to the left axis.
 
         Args:
             name: Name to refer to this line, for updates.
+            side: Axis to which the line is attached, "left" or "right".
             args: Forwarded to ``pyplot.plot``.
             kwargs: Forwarded to ``pyplot.plot``.
         """
+        axis = self.left_axis if side == "left" else self.right_axis
+        if axis is None:
+            raise MatplotliveError(f"{side}-hand side axis not initialized")
         kwargs["animated"] = True
-        (line,) = self.left_axis.plot([], *args, **kwargs)
-        self.lines[name] = line
-
-    def add_line_right(self, name, *args, **kwargs) -> None:
-        """Add a line-plot to the right axis.
-
-        Args:
-            name: Name to refer to this line, for updates.
-            args: Forwarded to ``pyplot.plot``.
-            kwargs: Forwarded to ``pyplot.plot``.
-        """
-        if self.right_axis is None:
-            raise Exception("right-hand side axis not initialized")
-        kwargs["animated"] = True
-        (line,) = self.right_axis.plot([], *args, **kwargs)
+        (line,) = axis.plot([], *args, **kwargs)
         self.lines[name] = line
 
     def legend(self, legend: Sequence[str]) -> None:
