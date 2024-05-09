@@ -28,23 +28,23 @@ class LivePlot:
         """
         if faster:  # blitting doesn't work with all matplotlib backends
             matplotlib.use("TkAgg")
-        figure, axis = plt.subplots()
-        axis.set_xlim(*xlim)
-        axis.set_ylim(*ylim)
-        rhs_axis = None
+        figure, left_axis = plt.subplots()
+        left_axis.set_xlim(*xlim)
+        left_axis.set_ylim(*ylim)
+        right_axis = None
         if ylim_rhs is not None:
-            rhs_axis = axis.twinx()
-            rhs_axis.set_ylim(*ylim_rhs)
+            right_axis = left_axis.twinx()
+            right_axis.set_ylim(*ylim_rhs)
         plt.show(block=False)
         plt.pause(0.05)
-        self.axis = axis
         self.background = None
         self.canvas = figure.canvas
         self.canvas.mpl_connect("draw_event", self.__on_draw)
         self.faster = faster
         self.figure = figure
+        self.left_axis = left_axis
         self.lines = {}
-        self.rhs_axis = rhs_axis
+        self.right_axis = right_axis
 
     def add_line(self, name, *args, **kwargs) -> None:
         """Add a line-plot to the left axis.
@@ -78,7 +78,7 @@ class LivePlot:
         Args:
             legend: Legend.
         """
-        self.axis.legend(legend)
+        self.left_axis.legend(legend)
 
     def update_line(self, name: str, xdata, ydata) -> None:
         """Update a previously-added line.
