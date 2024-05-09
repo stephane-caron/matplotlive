@@ -18,8 +18,8 @@ trange = np.linspace(t_min, t_max, nb_knots)
 
 dt = 1e-2  # [s]
 plot = RecentPast(
-    10.0,
-    dt,
+    timestep=dt,
+    duration=10.0,
     ylim=(-1.5, 1.5),
     ylim_right=(-3.5, 3.5),
 )

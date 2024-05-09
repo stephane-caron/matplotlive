@@ -24,8 +24,8 @@ class RecentPast:
 
     def __init__(
         self,
-        duration: float,
         timestep: float,
+        duration: float,
         ylim: Tuple[float, float],
         ylim_right: Optional[Tuple[float, float]] = None,
         faster: bool = True,
