@@ -4,15 +4,19 @@
 # SPDX-License-Identifier: Apache-2.0
 # Copyright 2024 Inria
 
+"""Draw sine waves using a raw Sketch rather than a RecentPast plot."""
+
 import time
 
 import numpy as np
 
 from matplotlive import Sketch
 
-t_min = 0.0
-t_max = 10.0
-nb_knots = 12
+t_min = 0.0  # seconds
+t_max = 1.0  # seconds
+omega = 20.0  # Hz
+nb_knots = 100
+dt = (t_max - t_min) / nb_knots
 trange = np.linspace(t_min, t_max, nb_knots)
 
 sketch = Sketch(
@@ -22,19 +26,18 @@ sketch = Sketch(
 )
 
 sketch.add_line("sine", "left", "b-")
-sketch.left_axis.set_ylabel("sin(t)", color="b")
+sketch.left_axis.set_ylabel(r"$\sin(\omega t)$", color="b")
 sketch.left_axis.tick_params(axis="y", labelcolor="b")
 
 sketch.add_line("cosine", "right", "g-")
-sketch.right_axis.set_ylabel("3 cos(t)", color="g")
+sketch.right_axis.set_ylabel(r"$3 \cos(\omega t)$", color="g")
 sketch.right_axis.tick_params(axis="y", labelcolor="g")
 
 sketch.redraw()  # update axis labels
 
-dt = 1e-2
 for i in range(100):
     t = i * dt
-    sketch.update_line("sine", trange, np.sin(trange + t))
-    sketch.update_line("cosine", trange, 3 * np.cos(trange + t))
+    sketch.update_line("sine", trange, np.sin(omega * (trange + t)))
+    sketch.update_line("cosine", trange, 3 * np.cos(omega * (trange + t)))
     sketch.update()
     time.sleep(dt)
