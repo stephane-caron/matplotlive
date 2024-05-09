@@ -7,32 +7,35 @@
 import time
 
 import numpy as np
+from loop_rate_limiters import RateLimiter
 
-from matplotlive import Sketch
+from matplotlive import RecentPast
 
 t_min = 0.0
 t_max = 10.0
 nb_knots = 12
 trange = np.linspace(t_min, t_max, nb_knots)
 
-sketch = Sketch(
-    xlim=(t_min, t_max),
+dt = 1e-2  # [s]
+plot = RecentPast(
+    10.0,
+    dt,
     ylim=(-1.5, 1.5),
     ylim_right=(-3.5, 3.5),
 )
 
-sketch.add_line("sine", "left", "b-")
-sketch.left_axis.set_ylabel("sin(t)", color="b")
-sketch.left_axis.tick_params(axis="y", labelcolor="b")
+plot.add_left("sin", "b-")
+plot.left_axis.set_ylabel("sin(t)", color="b")
+plot.left_axis.tick_params(axis="y", labelcolor="b")
 
-sketch.add_line("cosine", "right", "g-")
-sketch.right_axis.set_ylabel("3 cos(t)", color="g")
-sketch.right_axis.tick_params(axis="y", labelcolor="g")
+# plot.add_right("3cos", "right", "g-")
+# plot.right_axis.set_ylabel("3 cos(t)", color="g")
+# plot.right_axis.tick_params(axis="y", labelcolor="g")
 
-dt = 1e-2
+rate = RateLimiter(frequency=1.0 / dt)
 for i in range(100):
     t = i * dt
-    sketch.update_line("sine", trange, np.sin(trange + t))
-    sketch.update_line("cosine", trange, 3 * np.cos(trange + t))
-    sketch.update()
-    time.sleep(dt)
+    plot.send("sin", np.sin(t))
+    # plot.send("cos", np.cos(t))
+    plot.update()
+    rate.sleep()

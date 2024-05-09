@@ -13,6 +13,7 @@ from matplotlib import pyplot as plt
 
 from .exceptions import MatplotliveError
 
+
 class Sketch:
     """Updatable plot using matplotlib."""
 
