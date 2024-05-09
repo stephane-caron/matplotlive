@@ -8,14 +8,14 @@
 
 import unittest
 
-from matplotlive import LivePlot
+from matplotlive import Sketch
 
 
-class TestLivePlot(unittest.IsolatedAsyncioTestCase):
-    """Tests the base LivePlot class."""
+class TestSketch(unittest.IsolatedAsyncioTestCase):
+    """Tests the base Sketch class."""
 
     def setUp(self):
-        self.live_plot = LivePlot(
+        self.live_plot = Sketch(
             xlim=(0.0, 12.0),
             ylim=(-1.0, 1.0),
             ylim_right=(-10.0, 10.0),
@@ -23,7 +23,7 @@ class TestLivePlot(unittest.IsolatedAsyncioTestCase):
         )
 
     def test_left_axis(self):
-        plot = LivePlot(
+        plot = Sketch(
             xlim=(0.0, 12.0),
             ylim=(-1.0, 1.0),
             faster=False,
@@ -32,7 +32,7 @@ class TestLivePlot(unittest.IsolatedAsyncioTestCase):
         self.assertIsNone(plot.right_axis)
 
     def test_right_axis(self):
-        plot = LivePlot(
+        plot = Sketch(
             xlim=(0.0, 12.0),
             ylim=(-1.0, 1.0),
             ylim_right=(-10.0, 10.0),
