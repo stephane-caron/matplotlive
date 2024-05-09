@@ -41,11 +41,13 @@ class RecentPast:
         """
         xlim = (-abs(duration), 0.0)
         trange = np.flip(-np.arange(0.0, duration, timestep))
+        sketch = Sketch(xlim, ylim, ylim_right, faster)
+        sketch.left_axis.set_xlabel("Time (seconds)")
         self.__max_updates: int = 0
         self.__nb_updates: Dict[str, int] = {}
         self.__shape = (len(trange),)
         self.series: Dict[str, NDArray[np.float64]] = {}
-        self.sketch = Sketch(xlim, ylim, ylim_right, faster)
+        self.sketch = sketch
         self.trange = trange
 
     @property
