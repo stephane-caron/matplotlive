@@ -17,13 +17,13 @@ class LivePlot:
 
     lines: Dict[str, Any]
 
-    def __init__(self, xlim, ylim, ylim_rhs=None, faster: bool = True):
+    def __init__(self, xlim, ylim, ylim_right=None, faster: bool = True):
         """Initialize live plot.
 
         Args:
             xlim: Limits for the x-axis.
             ylim: Limits for left-hand side y-axis.
-            ylim_rhs: Limits for the right-hand side y-axis.
+            ylim_right: Limits for the right-hand side y-axis.
             faster: If set, use blitting.
         """
         if faster:  # blitting doesn't work with all matplotlib backends
@@ -32,9 +32,9 @@ class LivePlot:
         left_axis.set_xlim(*xlim)
         left_axis.set_ylim(*ylim)
         right_axis = None
-        if ylim_rhs is not None:
+        if ylim_right is not None:
             right_axis = left_axis.twinx()
-            right_axis.set_ylim(*ylim_rhs)
+            right_axis.set_ylim(*ylim_right)
         plt.show(block=False)
         plt.pause(0.05)
         self.background = None
