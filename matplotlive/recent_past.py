@@ -51,12 +51,12 @@ class RecentPast:
         self.trange = trange
 
     @property
-    def left_axis(self) -> matplotlib.axes._subplots.Axes:
+    def left_axis(self) -> matplotlib.axes.Subplot:
         """Left axis of the plot."""
         return self.sketch.left_axis
 
     @property
-    def right_axis(self) -> matplotlib.axes._subplots.Axes:
+    def right_axis(self) -> matplotlib.axes.Subplot:
         """Right axis of the plot."""
         return self.sketch.right_axis
 
