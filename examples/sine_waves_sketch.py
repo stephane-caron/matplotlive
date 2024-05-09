@@ -29,6 +29,8 @@ sketch.add_line("cosine", "right", "g-")
 sketch.right_axis.set_ylabel("3 cos(t)", color="g")
 sketch.right_axis.tick_params(axis="y", labelcolor="g")
 
+sketch.redraw()  # update axis labels
+
 dt = 1e-2
 for i in range(100):
     t = i * dt

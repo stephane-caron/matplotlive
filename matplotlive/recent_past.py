@@ -58,6 +58,10 @@ class RecentPast:
         """Right axis of the plot."""
         return self.sketch.right_axis
 
+    def redraw(self):
+        """Redraw the entire plot (e.g. after updating axis labels)."""
+        self.sketch.redraw()
+
     def __add(self, name: str, side: str, *args, **kwargs) -> None:
         self.sketch.add_line(name, side, *args, **kwargs)
         if name in self.series:

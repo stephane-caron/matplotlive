@@ -54,6 +54,10 @@ class Sketch:
         self.lines = {}
         self.right_axis = right_axis
 
+    def redraw(self):
+        """Redraw the entire plot (e.g. after updating axis labels)."""
+        plt.show(block=False)
+
     def add_line(self, name: str, side: str, *args, **kwargs) -> None:
         """Add a line-plot to the left axis.
 

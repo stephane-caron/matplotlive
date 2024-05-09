@@ -28,14 +28,15 @@ plot.add_left("sin", "b-")
 plot.left_axis.set_ylabel("sin(t)", color="b")
 plot.left_axis.tick_params(axis="y", labelcolor="b")
 
-# plot.add_right("3cos", "right", "g-")
-# plot.right_axis.set_ylabel("3 cos(t)", color="g")
-# plot.right_axis.tick_params(axis="y", labelcolor="g")
+plot.add_right("3cos", "g-")
+plot.right_axis.set_ylabel("3 cos(t)", color="g")
+plot.right_axis.tick_params(axis="y", labelcolor="g")
+plot.redraw()
 
 rate = RateLimiter(frequency=1.0 / dt)
-for i in range(100):
+for i in range(1000):
     t = i * dt
     plot.send("sin", np.sin(t))
-    # plot.send("cos", np.cos(t))
+    plot.send("3cos", 3 * np.cos(t))
     plot.update()
     rate.sleep()
