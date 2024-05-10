@@ -32,7 +32,7 @@ plot.right_axis.tick_params(axis="y", labelcolor="g")
 plot.redraw()
 
 rate = RateLimiter(frequency=1.0 / TIMESTEP)
-for i in range(1000):
+for i in range(500):
     t = i * TIMESTEP
     plot.send("sin", math.sin(OMEGA * t))
     plot.send("3cos", 3 * math.cos(OMEGA * t))

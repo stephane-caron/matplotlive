@@ -12,15 +12,13 @@ import numpy as np
 
 from matplotlive import Sketch
 
-t_min = 0.0  # seconds
-t_max = 1.0  # seconds
-omega = 20.0  # Hz
-nb_knots = 100
-dt = (t_max - t_min) / nb_knots
-trange = np.linspace(t_min, t_max, nb_knots)
+OMEGA = 20.0  # Hz
+TIMESTEP = 1e-2  # s
+NB_STEPS = 100
 
+trange = np.linspace(0.0, NB_STEPS * TIMESTEP, NB_STEPS)
 sketch = Sketch(
-    xlim=(t_min, t_max),
+    xlim=(trange[0], trange[-1]),
     ylim=(-1.5, 1.5),
     ylim_right=(-3.5, 3.5),
 )
@@ -35,9 +33,9 @@ sketch.right_axis.tick_params(axis="y", labelcolor="g")
 
 sketch.redraw()  # update axis labels
 
-for i in range(100):
-    t = i * dt
-    sketch.update_line("sine", trange, np.sin(omega * (trange + t)))
-    sketch.update_line("cosine", trange, 3 * np.cos(omega * (trange + t)))
+for i in range(500):
+    t = i * TIMESTEP
+    sketch.update_line("sine", trange, np.sin(OMEGA * (trange + t)))
+    sketch.update_line("cosine", trange, 3 * np.cos(OMEGA * (trange + t)))
     sketch.update()
-    time.sleep(dt)
+    time.sleep(TIMESTEP)
