@@ -4,6 +4,8 @@
 # SPDX-License-Identifier: Apache-2.0
 # Copyright 2024 Inria
 
+"""Stream sine waves from streaming_server.py to TCP clients."""
+
 import asyncio
 import math
 import socket
@@ -11,19 +13,19 @@ import socket
 import msgpack
 from loop_rate_limiters import AsyncRateLimiter
 
-series: dict = {}
+waves: dict = {}
 
 OMEGA = 20.0  # rad/s
 
 
 async def update():
     """Update time series in the global dictionary."""
-    global series
+    global waves
     rate = AsyncRateLimiter(frequency=200.0)
     t = 0.0
     while True:
-        series["sine"] = math.sin(OMEGA * t)
-        series["cosine"] = 3 * math.cos(OMEGA * t)
+        waves["sine"] = math.sin(OMEGA * t)
+        waves["cosine"] = 3 * math.cos(OMEGA * t)
         t += rate.dt
         await rate.sleep()
 
@@ -45,17 +47,18 @@ async def serve(client, address) -> None:
             break
         request = data.decode("utf-8").strip()
         if request == "get":
-            reply = packer.pack(series)
+            reply = packer.pack(waves)
             await loop.sock_sendall(client, reply)
     print(f"Closing connection with {address[0]}:{address[1]}")
     client.close()
 
 
-async def listen(port: int = 4747):
+async def listen():
+    """Listen to incoming connections on port 4747."""
     loop = asyncio.get_event_loop()
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    server_socket.bind(("", port))
+    server_socket.bind(("", 4747))
     server_socket.listen(8)
     server_socket.setblocking(False)  # required by loop.sock_accept
     while True:
@@ -64,6 +67,7 @@ async def listen(port: int = 4747):
 
 
 async def main():
+    """Launch the two coroutines of this example server."""
     await asyncio.gather(update(), listen())
 
 
