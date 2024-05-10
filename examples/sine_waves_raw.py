@@ -6,8 +6,6 @@
 
 """Draw sine waves using a raw Sketch rather than a RecentPast plot."""
 
-import time
-
 import numpy as np
 
 from matplotlive import Sketch
@@ -38,4 +36,3 @@ for i in range(500):
     sketch.update_line("sine", trange, np.sin(OMEGA * (trange + t)))
     sketch.update_line("cosine", trange, 3 * np.cos(OMEGA * (trange + t)))
     sketch.update()
-    time.sleep(TIMESTEP)
