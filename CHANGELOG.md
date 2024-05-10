@@ -12,7 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - RecentPast plot for live time series streaming
 - Sine waves example using a RecentPast plot
 - Sine waves example using a raw Sketch rather than a RecentPast plot
-- Sketch class for fast line redrawing on an existing matplotlib canvas
+- Sketch class for fast line redrawing on an existing Matplotlib canvas
 - Unit tests for the Sketch class
 
 [unreleased]: https://github.com/qpsolvers/qpsolvers/compare/v0.0.1...HEAD

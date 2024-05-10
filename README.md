@@ -1,3 +1,3 @@
 # matplotlive
 
-Stream live plots to a matplotlib figure
+Stream live plots to a [Matplotlib](https://matplotlib.org/) figure.
