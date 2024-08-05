@@ -98,6 +98,8 @@ class LivePlot:
             name: Name of the time series.
             value: New value for the series.
         """
+        if name not in self.series:
+            self.add_left(name)
         # Deleting and appending is slightly faster than rolling an array of
         # size 20 (mean ± std. dev. of 7 runs, 100,000 loops each):
         #
