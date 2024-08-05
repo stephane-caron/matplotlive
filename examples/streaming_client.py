@@ -4,14 +4,14 @@
 # SPDX-License-Identifier: Apache-2.0
 # Copyright 2024 Inria
 
-"""Stream sine waves from streaming_server.py to a RecentPast plot."""
+"""Stream sine waves from streaming_server.py to a live plot."""
 
 import socket
 
 import msgpack
 from loop_rate_limiters import RateLimiter
 
-from matplotlive import RecentPast
+from matplotlive import LivePlot
 
 OMEGA = 20.0  # Hz
 TIMESTEP = 1e-2  # seconds
@@ -19,8 +19,8 @@ DURATION = 5.0  # duration of this example, in seconds
 
 
 def prepare_plot():
-    """Prepare a RecentPast plot to stream to."""
-    plot = RecentPast(
+    """Prepare a live plot to stream to."""
+    plot = LivePlot(
         timestep=TIMESTEP,
         duration=1.0,
         ylim=(-1.5, 1.5),

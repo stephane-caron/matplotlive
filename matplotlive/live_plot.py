@@ -16,7 +16,7 @@ from .exceptions import MatplotliveError
 from .sketch import Sketch
 
 
-class RecentPast:
+class LivePlot:
     """Live plot to which time series data is streamed."""
 
     sketch: Sketch

@@ -9,9 +9,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Added
 
 - Base class for all library exceptions
-- RecentPast plot for live time series streaming
-- Sine waves example using a RecentPast plot
-- Sine waves example using a raw Sketch rather than a RecentPast plot
+- LivePlot class for live time series streaming
+- Sine waves example using a LivePlot
+- Sine waves example using a raw Sketch rather than a LivePlot
 - Sketch class for fast line redrawing on an existing Matplotlib canvas
 - Unit tests for the Sketch class
 

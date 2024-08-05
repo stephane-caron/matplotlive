@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: Apache-2.0
 # Copyright 2024 Inria
 
-"""Draw sine waves using a raw Sketch rather than a RecentPast plot."""
+"""Draw sine waves using a raw Sketch rather than a live plot."""
 
 import numpy as np
 

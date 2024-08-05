@@ -4,16 +4,16 @@
 # SPDX-License-Identifier: Apache-2.0
 # Copyright 2024 Inria
 
-"""Draw sine waves using a RecentPast plot."""
+"""Draw sine waves using a live plot."""
 
 import math
 
-from matplotlive import RecentPast
+from matplotlive import LivePlot
 
 OMEGA = 20.0  # Hz
 TIMESTEP = 1e-2  # [s]
 
-plot = RecentPast(
+plot = LivePlot(
     timestep=TIMESTEP,
     duration=1.0,
     ylim=(-1.5, 1.5),
