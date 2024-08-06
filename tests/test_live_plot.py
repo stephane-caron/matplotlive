@@ -34,9 +34,11 @@ class TestLivePlot(unittest.TestCase):
         self.assertEqual(len(plot.series), 0)
         plot.add_left("foo")
         self.assertEqual(len(plot.series), 1)
+        self.assertIsNotNone(plot.left_axis)
 
     def test_uninitialized_right(self):
         plot = self.make_test_plot()
+        self.assertIsNone(plot.right_axis)
         with self.assertRaises(MatplotliveError):
             plot.add_right("bar")
 
@@ -44,3 +46,27 @@ class TestLivePlot(unittest.TestCase):
         plot = self.make_test_plot(ylim_right=(0.0, 10.0))
         plot.add_right("bar")
         self.assertEqual(len(plot.series), 1)
+        self.assertIsNotNone(plot.right_axis)
+
+    def test_add_twice(self):
+        plot = self.make_test_plot()
+        plot.add_left("foo")
+        with self.assertRaises(MatplotliveError):
+            plot.add_left("foo")
+
+    def test_send(self):
+        plot = self.make_test_plot()
+        plot.send("foo", 1.0)
+        plot.send("foo", 2.0)
+        plot.send("foo", 3.0)
+        self.assertTrue("foo" in plot.series)
+        self.assertAlmostEqual(plot.series["foo"][-1], 3.0)
+
+    def test_update(self):
+        plot = self.make_test_plot()
+        plot.send("foo", 1.0)
+        plot.send("foo", 2.0)
+        plot.send("bar", 3.0)
+        plot.update()
+        self.assertAlmostEqual(plot.series["foo"][-1], 2.0)
+        self.assertAlmostEqual(plot.series["bar"][-1], 3.0)
