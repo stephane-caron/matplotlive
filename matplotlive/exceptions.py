@@ -4,8 +4,7 @@
 # SPDX-License-Identifier: Apache-2.0
 # Copyright 2024 Inria
 
-"""
-Exceptions from matplotlive.
+"""Exceptions from matplotlive.
 
 We catch all solver exceptions and re-throw them in a library-owned exception
 to avoid abstraction leakage. See this `design decision
