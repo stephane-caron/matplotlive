@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## Unreleased
 
+## [1.0.0] - 2024-08-06
+
 ### Added
 
 - Base class for all library exceptions
@@ -15,5 +17,5 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Sketch class for fast line redrawing on an existing Matplotlib canvas
 - Unit tests for the Sketch class
 
-[unreleased]: https://github.com/qpsolvers/qpsolvers/compare/v0.0.1...HEAD
-[0.0.1]: https://github.com/qpsolvers/qpsolvers/releases/tag/v0.0.1
+[unreleased]: https://github.com/qpsolvers/qpsolvers/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/qpsolvers/qpsolvers/releases/tag/v1.0.0
