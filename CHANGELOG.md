@@ -17,5 +17,5 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Sketch class for fast line redrawing on an existing Matplotlib canvas
 - Unit tests for the Sketch class
 
-[unreleased]: https://github.com/qpsolvers/qpsolvers/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/qpsolvers/qpsolvers/releases/tag/v1.0.0
+[unreleased]: https://github.com/stephane-caron/matplotlive/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/stephane-caron/matplotlive/releases/tag/v1.0.0
