@@ -56,7 +56,7 @@ class LivePlot:
         return self.sketch.left_axis
 
     @property
-    def right_axis(self) -> matplotlib.axes.Subplot:
+    def right_axis(self) -> Optional[matplotlib.axes.Subplot]:
         """Right axis of the plot."""
         return self.sketch.right_axis
 
