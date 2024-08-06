@@ -16,7 +16,12 @@ class TestLivePlot(unittest.TestCase):
 
     def make_test_plot(self, *args, **kwargs):
         return LivePlot(
-            timestep=0.01, duration=0.5, ylim=(-1.0, 1.0), faster=False, *args, **kwargs
+            timestep=0.01,
+            duration=0.5,
+            ylim=(-1.0, 1.0),
+            faster=False,
+            *args,
+            **kwargs
         )
 
     def test_init(self):
@@ -36,6 +41,6 @@ class TestLivePlot(unittest.TestCase):
             plot.add_right("bar")
 
     def test_add_right(self):
-        plot = self.make_test_plot()
-        with self.assertRaises(MatplotliveError):
-            plot.add_right("bar")
+        plot = self.make_test_plot(ylim_right=(0.0, 10.0))
+        plot.add_right("bar")
+        self.assertEqual(len(plot.series), 1)
