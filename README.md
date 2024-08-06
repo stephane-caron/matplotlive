@@ -25,3 +25,7 @@ for i in range(10_000):
     plot.send("foo", 3 * math.cos(i / 100))
     plot.update()
 ```
+
+## See also
+
+- [Teleplot](https://github.com/nesnes/teleplot): alternative to plot telemetry data from a running program.
