@@ -1,5 +1,9 @@
 # matplotlive
 
+[![Build](https://img.shields.io/github/actions/workflow/status/stephane-caron/matplotlive/main.yml?branch=main)](https://github.com/stephane-caron/matplotlive/actions)
+[![Coverage](https://coveralls.io/repos/github/stephane-caron/matplotlive/badge.svg?branch=main)](https://coveralls.io/github/stephane-caron/matplotlive?branch=main)
+[![PyPI version](https://img.shields.io/pypi/v/matplotlive)](https://pypi.org/project/matplotlive/)
+
 Stream live plots to a [Matplotlib](https://matplotlib.org/) figure.
 
 ## Installation
