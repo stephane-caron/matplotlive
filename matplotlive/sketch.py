@@ -18,7 +18,9 @@ from .exceptions import MatplotliveError
 class Sketch:
     """Updatable plot using matplotlib."""
 
+    left_axis: Axes
     lines: Dict[str, Any]
+    right_axis: Optional[Axes]
 
     def __init__(
         self,
@@ -51,9 +53,9 @@ class Sketch:
         self.canvas.mpl_connect("draw_event", self.__on_draw)
         self.faster = faster
         self.figure = figure
-        self.left_axis: Axes = left_axis
+        self.left_axis = left_axis
         self.lines = {}
-        self.right_axis: Axes = right_axis
+        self.right_axis = right_axis
 
     def redraw(self) -> None:
         """Redraw the entire plot (e.g. after updating axis labels)."""
