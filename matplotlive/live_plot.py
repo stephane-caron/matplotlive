@@ -119,8 +119,7 @@ class LivePlot:
         self.sketch.update_line(name, self.trange, new_series)
         self.series[name] = new_series
         self.__nb_updates[name] += 1
-        if self.__max_updates < self.__nb_updates[name]:
-            self.__max_updates = self.__nb_updates[name]
+        self.__max_updates = max(self.__max_updates, self.__nb_updates[name])
 
     def update(self) -> None:
         """Update plot with latest time-series values.
