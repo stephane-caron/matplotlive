@@ -64,6 +64,12 @@ class LivePlot:
         """Redraw the entire plot (e.g. after updating axis labels)."""
         self.sketch.redraw()
 
+    def reset(self):
+        """Clear the plot."""
+        self.__max_updates = 0
+        self.series = {}
+        self.sketch.reset()
+
     def __add(self, name: str, side: str, *args, **kwargs) -> None:
         self.sketch.add_line(name, side, *args, **kwargs)
         if name in self.series:
