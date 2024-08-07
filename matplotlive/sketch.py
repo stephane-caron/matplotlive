@@ -55,7 +55,7 @@ class Sketch:
         self.figure = figure
         self.left_axis = left_axis
         self.lines = {}
-        self.right_axis = right_axis
+        self.right_axis = right_axis  # type: ignore
 
     def redraw(self) -> None:
         """Redraw the entire plot (e.g. after updating axis labels)."""
