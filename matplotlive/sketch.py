@@ -44,7 +44,7 @@ class Sketch:
         left_axis.set_ylim(*ylim)
         right_axis: Optional[Axes] = None
         if ylim_right is not None:
-            right_axis = left_axis.twinx()
+            right_axis = left_axis.twinx()  # type: ignore
             right_axis.set_ylim(*ylim_right)
         plt.show(block=False)
         plt.pause(0.05)
@@ -110,7 +110,9 @@ class Sketch:
         if event is not None:
             if event.canvas != self.canvas:
                 raise RuntimeError
-        self.background = self.canvas.copy_from_bbox(self.figure.bbox)
+        self.background = self.canvas.copy_from_bbox(  # type: ignore
+            self.figure.bbox,
+        )
         self.__draw_lines()
 
     def update(self) -> None:
