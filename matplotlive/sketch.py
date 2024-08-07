@@ -42,7 +42,7 @@ class Sketch:
         figure, left_axis = plt.subplots()
         left_axis.set_xlim(*xlim)
         left_axis.set_ylim(*ylim)
-        right_axis = None
+        right_axis: Optional[Axes] = None
         if ylim_right is not None:
             right_axis = left_axis.twinx()
             right_axis.set_ylim(*ylim_right)
