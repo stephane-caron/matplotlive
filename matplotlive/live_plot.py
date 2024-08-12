@@ -82,8 +82,8 @@ class LivePlot:
 
         Args:
             name: Name of the time series.
-            args: Forwarded to ``pyplot.plot``.
-            kwargs: Forwarded to ``pyplot.plot``.
+            args: Positional arguments forwarded to ``pyplot.plot``.
+            kwargs: Keyword arguments forwarded to ``pyplot.plot``.
         """
         self.__add(name, "left", *args, **kwargs)
 
@@ -92,8 +92,8 @@ class LivePlot:
 
         Args:
             name: Name of the time series.
-            args: Forwarded to ``pyplot.plot``.
-            kwargs: Forwarded to ``pyplot.plot``.
+            args: Positional arguments forwarded to ``pyplot.plot``.
+            kwargs: Keyword arguments forwarded to ``pyplot.plot``.
         """
         self.__add(name, "right", *args, **kwargs)
 
@@ -103,6 +103,8 @@ class LivePlot:
         Args:
             name: Name of the time series.
             value: New value for the series.
+            args: Positional arguments forwarded to ``pyplot.plot``.
+            kwargs: Keyword arguments forwarded to ``pyplot.plot``.
         """
         if name not in self.series:
             self.add_left(name)
