@@ -97,17 +97,24 @@ class LivePlot:
         """
         self.__add(name, "right", *args, **kwargs)
 
-    def send(self, name: str, value: float) -> None:
+    def send(
+        self, name: str, value: float, add_to: str = "", *args, **kwargs
+    ) -> None:
         """Send a new value for a given time series.
 
         Args:
             name: Name of the time series.
             value: New value for the series.
-            args: Positional arguments forwarded to ``pyplot.plot``.
-            kwargs: Keyword arguments forwarded to ``pyplot.plot``.
+            add_to: If set to "left" or "right" and the time series does not
+                exist yet, add it to the corresponding left/right axis.
+            args: If adding, positional arguments for ``pyplot.plot``.
+            kwargs: If adding, keyword arguments for ``pyplot.plot``.
         """
         if name not in self.series:
-            self.add_left(name)
+            if add_to in ("left", "right"):
+                self.__add(name, add_to, *args, **kwargs)
+            else:  # skip
+                return
         # Deleting and appending is slightly faster than rolling an array of
         # size 20 (mean ± std. dev. of 7 runs, 100,000 loops each):
         #

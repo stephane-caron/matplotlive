@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Added
 
 - LivePlot: Add a `reset` function
+- LivePlot: New `add_to` argument to the `send` function
 - Sketch: Add a `reset` function
 
 ## [1.0.0] - 2024-08-06
