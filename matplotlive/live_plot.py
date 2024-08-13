@@ -43,6 +43,7 @@ class LivePlot:
         trange = np.flip(-np.arange(0.0, duration, timestep))
         sketch = Sketch(xlim, ylim, ylim_right, faster)
         sketch.left_axis.set_xlabel("Time (seconds)")
+        self.__legend = {"left": [], "right": []}
         self.__max_updates: int = 0
         self.__nb_updates: Dict[str, int] = {}
         self.__shape = (len(trange),)
@@ -60,6 +61,13 @@ class LivePlot:
         """Right axis of the plot."""
         return self.sketch.right_axis
 
+    def legend(self) -> None:
+        """Place a legend on the left or right axes that are used."""
+        if self.__legend["left"]:
+            self.left_axis.legend(self.__legend["left"], loc="upper left")
+        if self.__legend["right"]:
+            self.right_axis.legend(self.__legend["right"], loc="upper right")
+
     def redraw(self):
         """Redraw the entire plot (e.g. after updating axis labels)."""
         self.sketch.redraw()
@@ -76,6 +84,7 @@ class LivePlot:
             raise MatplotliveError(f"a series named '{name}' already exists")
         self.series[name] = np.full(self.__shape, np.nan)
         self.__nb_updates[name] = 0
+        self.__legend[side].append(name)
 
     def add_left(self, name: str, *args, **kwargs) -> None:
         """Add a new time series to the left axis.
