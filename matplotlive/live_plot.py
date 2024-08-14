@@ -43,7 +43,7 @@ class LivePlot:
         trange = np.flip(-np.arange(0.0, duration, timestep))
         sketch = Sketch(xlim, ylim, ylim_right, faster)
         sketch.left_axis.set_xlabel("Time (seconds)")
-        self.__legend = {"left": [], "right": []}
+        self.__legend: Dict[str, list] = {"left": [], "right": []}
         self.__max_updates: int = 0
         self.__nb_updates: Dict[str, int] = {}
         self.__shape = (len(trange),)
@@ -65,7 +65,7 @@ class LivePlot:
         """Place a legend on the left or right axes that are used."""
         if self.__legend["left"]:
             self.left_axis.legend(self.__legend["left"], loc="upper left")
-        if self.__legend["right"]:
+        if self.right_axis and self.__legend["right"]:
             self.right_axis.legend(self.__legend["right"], loc="upper right")
 
     def redraw(self):
