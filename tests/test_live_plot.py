@@ -57,13 +57,17 @@ class TestLivePlot(unittest.TestCase):
     def test_send(self):
         plot = self.make_test_plot()
         plot.send("foo", 1.0)
+        self.assertFalse("foo" in plot.series)
+        plot.add_left("foo")
+        self.assertTrue("foo" in plot.series)
         plot.send("foo", 2.0)
         plot.send("foo", 3.0)
-        self.assertTrue("foo" in plot.series)
         self.assertAlmostEqual(plot.series["foo"][-1], 3.0)
 
     def test_update(self):
         plot = self.make_test_plot()
+        plot.add_left("foo")
+        plot.add_left("bar")
         plot.send("foo", 1.0)
         plot.send("foo", 2.0)
         plot.send("bar", 3.0)
