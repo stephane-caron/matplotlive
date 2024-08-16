@@ -8,8 +8,21 @@
 
 import socket
 
-import msgpack
-from loop_rate_limiters import RateLimiter
+try:
+    import msgpack
+except ModuleNotFoundError:
+    raise ModuleNotFoundError(
+        "This example needs msgpack: `conda install msgpack-python` "
+        "or `pip install msgpack`"
+    )
+
+try:
+    from loop_rate_limiters import RateLimiter
+except ModuleNotFoundError:
+    raise ModuleNotFoundError(
+        "This example needs loop rate limiters: "
+        "`[conda|pip] install loop-rate-limiters`"
+    )
 
 from matplotlive import LivePlot
 
@@ -42,7 +55,12 @@ def main():
     rate = RateLimiter(frequency=1.0 / TIMESTEP)
     plot = prepare_plot()
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server.connect(("localhost", 4747))
+    try:
+        server.connect(("localhost", 4747))
+    except ConnectionRefusedError:
+        raise ConnectionRefusedError(
+            "Did you run `streaming_server.py` first?"
+        )
     for i in range(int(DURATION / TIMESTEP)):
         server.send("get".encode("utf-8"))
         data = server.recv(4096)

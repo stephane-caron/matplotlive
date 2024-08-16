@@ -10,8 +10,21 @@ import asyncio
 import math
 import socket
 
-import msgpack
-from loop_rate_limiters import AsyncRateLimiter
+try:
+    import msgpack
+except ModuleNotFoundError:
+    raise ModuleNotFoundError(
+        "This example needs msgpack: `conda install msgpack-python` "
+        "or `pip install msgpack`"
+    )
+
+try:
+    from loop_rate_limiters import AsyncRateLimiter
+except ModuleNotFoundError:
+    raise ModuleNotFoundError(
+        "This example needs loop rate limiters: "
+        "`[conda|pip] install loop-rate-limiters`"
+    )
 
 waves: dict = {}
 
