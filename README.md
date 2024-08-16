@@ -29,11 +29,15 @@ for i in range(10_000):
 
 ### From conda-forge
 
+[![Conda version](https://img.shields.io/conda/vn/conda-forge/matplotlive.svg)](https://anaconda.org/conda-forge/matplotlive)
+
 ```console
 conda install -c conda-forge matplotlive
 ```
 
 ### From PyPI
+
+[![PyPI version](https://img.shields.io/pypi/v/matplotlive)](https://pypi.org/project/matplotlive/)
 
 ```console
 pip install matplotlive
