@@ -107,16 +107,14 @@ class LivePlot:
         self.__add(name, "right", *args, **kwargs)
 
     def send(self, name: str, value: float) -> None:
-        """Send a new value for a given time series.
+        """Send a new value to a time series, adding it if needed.
 
         Args:
             name: Name of the time series.
             value: New value for the series.
-            args: If adding, positional arguments for ``pyplot.plot``.
-            kwargs: If adding, keyword arguments for ``pyplot.plot``.
         """
         if name not in self.series:
-            self.add_left(name)  # used in readme example
+            self.add_left(name)
         # Deleting and appending is slightly faster than rolling an array of
         # size 20 (mean ± std. dev. of 7 runs, 100,000 loops each):
         #
@@ -131,6 +129,24 @@ class LivePlot:
         self.series[name] = new_series
         self.__nb_updates[name] += 1
         self.__max_updates = max(self.__max_updates, self.__nb_updates[name])
+
+    def push(self, name: str, value: float) -> None:
+        """Send a new value to an existing time series.
+
+        Args:
+            name: Name of the time series.
+            value: New value for the series.
+
+        Note:
+            The difference between :func:`send` and :func:`push` happens when
+            the series was not added: :func:`send` will create it, while
+            :func:`push` will skip. Pushing is convenient when monitoring many
+            signals: you can push all of them in your program, and maintain a
+            separate list of those to plot when adding them.
+        """
+        if name not in self.series:
+            return
+        return self.send(name, value)
 
     def update(self) -> None:
         """Update plot with latest time-series values.

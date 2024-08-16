@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Added
 
 - LivePlot: Add `legend` shorthand function
+- LivePlot: Add `push` function
 - LivePlot: Add `reset` function
 - Sketch: Add a `reset` function
 
