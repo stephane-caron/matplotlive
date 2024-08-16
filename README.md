@@ -1,6 +1,7 @@
 # matplotlive
 
 [![Build](https://img.shields.io/github/actions/workflow/status/stephane-caron/matplotlive/ci.yml?branch=main)](https://github.com/stephane-caron/matplotlive/actions)
+[![Documentation](https://img.shields.io/github/actions/workflow/status/stephane-caron/matplotlive/docs.yml?branch=main&label=docs)](https://stephane-caron.github.io/matplotlive/)
 [![Coverage](https://coveralls.io/repos/github/stephane-caron/matplotlive/badge.svg?branch=main)](https://coveralls.io/github/stephane-caron/matplotlive?branch=main)
 [![Conda version](https://img.shields.io/conda/vn/conda-forge/matplotlive.svg)](https://anaconda.org/conda-forge/matplotlive)
 [![PyPI version](https://img.shields.io/pypi/v/matplotlive)](https://pypi.org/project/matplotlive/)
