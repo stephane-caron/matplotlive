@@ -1,5 +1,6 @@
 .coverage
 .tox
 __pycache__
+_build
 dist/
 examples/matplotlive
