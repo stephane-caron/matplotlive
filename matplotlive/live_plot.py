@@ -116,7 +116,7 @@ class LivePlot:
             kwargs: If adding, keyword arguments for ``pyplot.plot``.
         """
         if name not in self.series:
-            return
+            self.add_left(name)  # used in readme example
         # Deleting and appending is slightly faster than rolling an array of
         # size 20 (mean ± std. dev. of 7 runs, 100,000 loops each):
         #
