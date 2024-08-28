@@ -31,6 +31,7 @@ dependencies = [
 ]
 
 [project.urls]
+Homepage = "https://github.com/stephane-caron/matplotlive"
 Source = "https://github.com/stephane-caron/matplotlive"
 Tracker = "https://github.com/stephane-caron/matplotlive/issues"
 Changelog = "https://github.com/stephane-caron/matplotlive/blob/main/CHANGELOG.md"

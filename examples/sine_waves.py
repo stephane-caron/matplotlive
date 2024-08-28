@@ -24,13 +24,17 @@ plot.add_left("sin", "b-")
 plot.left_axis.set_ylabel(r"$\sin(\omega t)$", color="b")
 plot.left_axis.tick_params(axis="y", labelcolor="b")
 
-plot.add_right("3cos", "g-")
-plot.right_axis.set_ylabel(r"$3 \cos(\omega t)$", color="g")
+plot.add_right("3 cos", "g-")
+plot.add_right("1.5 cos", "g:")
+plot.right_axis.set_ylabel(r"Cosines", color="g")
 plot.right_axis.tick_params(axis="y", labelcolor="g")
+
+plot.legend()
 plot.redraw()
 
 for i in range(500):
     t = i * TIMESTEP
     plot.send("sin", math.sin(OMEGA * t))
-    plot.send("3cos", 3 * math.cos(OMEGA * t))
+    plot.send("3 cos", 3 * math.cos(OMEGA * t))
+    plot.send("1.5 cos", 1.5 * math.cos(OMEGA * t))
     plot.update()
