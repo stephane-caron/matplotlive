@@ -42,6 +42,13 @@ line-length = 79
 [tool.flit.module]
 name = "matplotlive"
 
+[tool.flit.sdist]
+exclude = [
+    "**/tests/*",
+    ".git*",
+    "docs/",
+]
+
 [tool.ruff]
 line-length = 79
 

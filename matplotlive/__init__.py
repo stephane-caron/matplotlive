@@ -10,7 +10,7 @@ from .exceptions import MatplotliveError
 from .live_plot import LivePlot
 from .sketch import Sketch
 
-__version__ = "1.1.0"
+__version__ = "1.1.1"
 
 __all__ = [
     "MatplotliveError",
