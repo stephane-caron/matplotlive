@@ -44,9 +44,7 @@ name = "matplotlive"
 
 [tool.flit.sdist]
 exclude = [
-    "**/tests/*",
     ".git*",
-    "docs/",
 ]
 
 [tool.ruff]
