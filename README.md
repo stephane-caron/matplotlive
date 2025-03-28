@@ -10,6 +10,8 @@ Stream live plots to a [Matplotlib](https://matplotlib.org/) figure.
 
 ## Example
 
+<img src="https://github.com/user-attachments/assets/4cf0b8fa-bdf1-4a5d-bb3c-88ab9092d4ad" alt="Live plot from this example" align="right" width=250>
+
 ```py
 import math
 import matplotlive
