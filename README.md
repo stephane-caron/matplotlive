@@ -1,47 +1,31 @@
 # matplotlive
 
-[![Build](https://img.shields.io/github/actions/workflow/status/stephane-caron/matplotlive/ci.yml?branch=main)](https://github.com/stephane-caron/matplotlive/actions)
-[![Documentation](https://img.shields.io/github/actions/workflow/status/stephane-caron/matplotlive/docs.yml?branch=main&label=docs)](https://stephane-caron.github.io/matplotlive/)
-[![Coverage](https://coveralls.io/repos/github/stephane-caron/matplotlive/badge.svg?branch=main)](https://coveralls.io/github/stephane-caron/matplotlive?branch=main)
-[![Conda version](https://img.shields.io/conda/vn/conda-forge/matplotlive.svg)](https://anaconda.org/conda-forge/matplotlive)
-[![PyPI version](https://img.shields.io/pypi/v/matplotlive)](https://pypi.org/project/matplotlive/)
+This repository has moved to Codeberg:
 
-Stream live plots to a [Matplotlib](https://matplotlib.org/) figure.
+<p align="center">
+  <a href="https://codeberg.org/stephane-caron/matplotlive">
+    <img src="https://codeberg.org/Codeberg/GetItOnCodeberg/raw/branch/main/get-it-on-blue-on-white.png" alt="Get it on Codeberg" height="80">
+  </a>
+</p>
 
-## Example
+Its new address is: **https://codeberg.org/stephane-caron/matplotlive**
 
-<img src="https://github.com/user-attachments/assets/4cf0b8fa-bdf1-4a5d-bb3c-88ab9092d4ad" alt="Live plot from this example" align="right" width=250>
+Codeberg is a free and open-source code forge maintained by a non-profit organization. Development, issues and pull requests now happen over there, and this repository is not mirrored.
 
-```py
-import math
-import matplotlive
+## For users
 
-plot = matplotlive.LivePlot(
-    timestep=0.01,  # seconds
-    duration=1.0,   # seconds
-    ylim=(-5.0, 5.0),
-)
+Nothing changes for users installing via pip:
 
-for i in range(10_000):
-    plot.send("bar", math.sin(0.3 * i))
-    plot.send("foo", 3 * math.cos(0.2 * i))
-    plot.update()
-```
-
-## Installation
-
-### From conda-forge
-
-```console
-conda install -c conda-forge matplotlive
-```
-
-### From PyPI
-
-```console
+```bash
 pip install matplotlive
 ```
 
-## See also
+## For contributors
 
-- [Teleplot](https://github.com/nesnes/teleplot): alternative to plot telemetry data from a running program.
+If you have a local clone of this repository, you can point it at the new remote:
+
+```bash
+git remote set-url origin https://codeberg.org/stephane-caron/matplotlive.git
+```
+
+Issues and pull requests are welcome on Codeberg. This GitHub repository is archived and no longer receives updates.
